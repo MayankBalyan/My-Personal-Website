@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block categoriesac %}active{% endblock categoriesac %}
+{% block categoriesact %}active{% endblock categoriesact %}
+{% block body %}
+<section id="hero">
+    <div class="container-xl">
+        <h2>All the Categories</h2>
+        {% for p in cat|slice:":"%}
+                                <div class="col-md-12 col-sm-6">
+                                    <!-- post  -->
+
+                                    <div class="post post-list clearfix">
+                                        <div class="thumb rounded">
+                                            <a href="/category/{{p.slug}}">
+                                                <div class="inner">
+                                                    <img src="{{p.img.url}}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details">
+                                            <ul class="meta list-inline mb-3">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <img src="images/other/author-sm.jpg" class="author" alt="">
+                                                        Mayank Balyan
+                                                    </a>
+                                                </li>
+                                               
+                                                
+                                            </ul>
+                                            <h5 class="post-tile">
+                                                <a href="/category/{{p.slug}}">
+                                                    {{p.title}}
+                                                </a>
+                                            </h5>
+                                            <p class="excerpt mb-0">
+                                                There are many posts added by the admin Mayank Balyan.There are some of that
+                                                you will find amazing blog posts regarding of the topic : {{p.title}}
+                                                
+                                            </p>
+                                            
+                                        </div>
+                                    </div>
+
+
+
+                                    
+                                </div>
+                                {% endfor %}
+
+        
+    </div>
+</section>
+
+
+{% endblock body %}

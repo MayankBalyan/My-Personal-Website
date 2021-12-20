@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+<section id="hero">
+    <div class="container-xl">
+        <div class="row gy-4">
+        <h1>{{post.title}}</h1>
+        <div class="">
+            <img src="{{post.img.url}}"width="800px" height="450px" alt="" style="border-radius:20px;">
+        </div>
+        <div style="padding: 14px 15px;">
+        {{post.content|safe}}
+    </div>
+    <h2>Comments :</h2>
+    <div class="my-2">
+        {% if user.is_authenticated %}
+        <form action="/postComment" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Post Comment </label>
+                <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
+            </div>
+            <input type="hidden" name="postSno" value="{{post.sno}}">
+            <button type="submit" class="btn ">Submit</button>
+        </form>
+        {% else %}
+        Please login to post a comment 
+        {% endif %}
+  {% for comment in comments %}
+    <div class="row my-3">
+        <div class="col-md-1  ">
+        <img class="rounded mx-auto d-block w-100 p-2" src="https://cdn-icons.flaticon.com/png/512/3177/premium/3177440.png?token=exp=1639907695~hmac=516d3c9636abf35bc867843600f5d08b"  alt="user">
+        </div>
+        <div class="col-md-11 "> 
+        <b> {{comment.user.first_name}} </b> at {{comment.timestamp}}
+        <div>   {{comment.comment}} </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+</section>
+
+
+{% endblock body%}

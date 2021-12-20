@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<section id="hero">
+    <div class="container-xl">
+<h2>Search Results:
+</h2>
+{% if allPosts|length < 1 %}
+   <p>No search results</p>
+    Your search query : <b>{{query}}</b> did not match any documents. <br>
+    Suggestions:
+    <ul>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try more general keywords.</li>
+   <li> Try fewer keywords.</li>
+   <li> Try different keywords.</li>
+    </li>
+    </ul>
+
+
+    {% endif %}
+{% for p in allPosts%}
+                                <div class="col-md-12 col-sm-6">
+                                    <!-- post  -->
+
+                                    <div class="post post-list clearfix">
+                                        <div class="thumb rounded">
+                                            <a href="/blog/{{p.slug}}">
+                                                <div class="inner">
+                                                    <img src="{{p.img.url}}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details">
+                                            <ul class="meta list-inline mb-3">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <img src="images/other/author-sm.jpg" class="author" alt="">
+                                                        Mayank Balyan
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="/blog/{{p.slug}}">Finance</a>
+                                                </li>
+                                                <li class="list-inline-item">26 May 2021</li>
+                                            </ul>
+                                            <h5 class="post-tile">
+                                                <a href="/blog/{{p.slug}}">
+                                                    {{p.title}}
+                                                </a>
+                                            </h5>
+                                            <p class="excerpt mb-0">
+                                                This is Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
+                                                iure.
+                                            </p>
+                                            <div class="post-bottom clearfix d-flex align-items-center">
+                                                <div class="social-share me-auto">
+                                                    <button class="toggle-button icon-share"></button>
+                                                    <ul class="icons list-unstyled list-inline mb-0">
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="far fa-envelope"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="more-button float-end">
+                                                    <a href="#"><span class="icon-options"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    
+                                </div>
+                                {% endfor %}
+
+
+</div>
+</section>
+
+
+
+
+
+{% endblock body%}
